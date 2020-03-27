@@ -1,0 +1,2 @@
+rootProject.name='TestBluetooPrinter'
+include ':app'
