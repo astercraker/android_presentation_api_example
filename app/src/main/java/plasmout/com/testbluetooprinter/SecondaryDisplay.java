@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Presentation;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -44,13 +45,12 @@ public class SecondaryDisplay extends Presentation {
         mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 
             public void onPrepared(MediaPlayer mediaPlayer) {
+                //View placeholder = (View) findViewById(R.id.placeholder);
+
+                //placeholder.setVisibility(View.GONE);
+
                 mVideoView.start();
-
-                increaseVolume();
-                increaseVolume();
-                increaseVolume();
-                increaseVolume();
-
+                mVideoView.setBackgroundColor(Color.TRANSPARENT);
             }
         });
 
