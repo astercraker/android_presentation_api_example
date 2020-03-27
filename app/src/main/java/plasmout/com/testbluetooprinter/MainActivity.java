@@ -2,6 +2,7 @@ package plasmout.com.testbluetooprinter;
 
 import android.content.Context;
 import android.hardware.display.DisplayManager;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -57,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
         if (displayManager!= null){
             presentationDisplays = displayManager.getDisplays(DisplayManager.DISPLAY_CATEGORY_PRESENTATION);
             if (presentationDisplays.length > 0){
-                SecondaryDisplay secondaryDisplay = new SecondaryDisplay(MainActivity.this, presentationDisplays[0]);
+                SecondaryDisplay secondaryDisplay = new SecondaryDisplay(MainActivity.this, presentationDisplays[0], Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.musk_and_moss2
+                ) );
                 secondaryDisplay.show();
             }
         }
