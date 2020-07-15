@@ -17,15 +17,18 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 public class SecondaryDisplay extends Presentation {
-    public SecondaryDisplay(Context outerContext, Display display, Uri video) {
+    public SecondaryDisplay(Context outerContext, Display display, Uri video, Uri secondVideo) {
         super(outerContext, display);
         mContext = outerContext;
         mVideo = video;
+        mSecondVideo = secondVideo;
     }
 
     VideoView mVideoView;
     Context mContext;
     Uri mVideo;
+    Uri mSecondVideo;
+    boolean mVideoCompleted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +45,22 @@ public class SecondaryDisplay extends Presentation {
         mVideoView = (VideoView) findViewById(R.id.videoView1);
         mVideoView.setVideoURI(mVideo);
 
+
+        mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                if(!mVideoCompleted){
+                    updateVideo(mSecondVideo);
+                }
+                mVideoCompleted = true;
+                mVideoView.start();
+            }
+        });
+
         mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 
             public void onPrepared(MediaPlayer mediaPlayer) {
-                //View placeholder = (View) findViewById(R.id.placeholder);
-
-                //placeholder.setVisibility(View.GONE);
-
                 mVideoView.start();
-                mVideoView.setBackgroundColor(Color.TRANSPARENT);
             }
         });
 

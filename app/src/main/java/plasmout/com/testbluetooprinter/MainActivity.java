@@ -58,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
         if (displayManager!= null){
             presentationDisplays = displayManager.getDisplays(DisplayManager.DISPLAY_CATEGORY_PRESENTATION);
             if (presentationDisplays.length > 0){
-                SecondaryDisplay secondaryDisplay = new SecondaryDisplay(MainActivity.this, presentationDisplays[0], Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.musk_and_moss2
-                ) );
+                SecondaryDisplay secondaryDisplay = new SecondaryDisplay(MainActivity.this, presentationDisplays[0],
+                        Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.musk_and_moss2),
+                        Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.musk_and_moss) );
                 secondaryDisplay.show();
             }
         }
